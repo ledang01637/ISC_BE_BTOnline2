@@ -1,5 +1,6 @@
 ﻿using BTBackendOnline2.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Security.Principal;
 
 namespace BTBackendOnline2.DB
 {
@@ -47,6 +48,11 @@ namespace BTBackendOnline2.DB
             modelBuilder.Entity<User>()
                 .Property(u => u.Address)
                 .HasMaxLength(255)
+                .IsRequired();
+
+            modelBuilder.Entity<User>()
+                .Property(u => u.Email)
+                .HasMaxLength(100)
                 .IsRequired();
 
             modelBuilder.Entity<AllowAccess>()

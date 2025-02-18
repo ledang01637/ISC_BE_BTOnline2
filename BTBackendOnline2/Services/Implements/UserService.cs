@@ -6,6 +6,8 @@ using BTBackendOnline2.Models;
 using BTBackendOnline2.Services.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace BTBackendOnline2.Services.Implements
 {
@@ -34,7 +36,9 @@ namespace BTBackendOnline2.Services.Implements
                     RoleId = request.RoleId,
                     FullName = request.FullName,
                     BirthDate = request.BirthDate,
-                    Address = request.Address
+                    Address = request.Address,
+                    Email = request.Email,
+                    Password = ComputeSha256(request.Password),
                 };
                 _context.Users.Add(user);
                 _context.SaveChanges();
@@ -45,7 +49,9 @@ namespace BTBackendOnline2.Services.Implements
                     RoleId = request.RoleId,
                     FullName = request.FullName,
                     BirthDate = request.BirthDate,
-                    Address = request.Address
+                    Address = request.Address,
+                    Email = request.Email,
+                    Password = ComputeSha256(request.Password)
                 };
 
                 return ApiResponse<UserRes>.Success(response);
@@ -53,7 +59,7 @@ namespace BTBackendOnline2.Services.Implements
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error occurred in Create method");
-                return ApiResponse<UserRes>.Fail($"Error: {ex.Message}");
+                return ApiResponse<UserRes>.Fail("Error unique");
             }
         }
 
@@ -89,7 +95,9 @@ namespace BTBackendOnline2.Services.Implements
                         RoleId = r.RoleId,
                         FullName = r.FullName,
                         BirthDate = r.BirthDate,
-                        Address = r.Address
+                        Address = r.Address,
+                        Email = r.Email,
+                        Password = r.Password,
                     })
                     .ToList();
 
@@ -116,6 +124,8 @@ namespace BTBackendOnline2.Services.Implements
                 existing.FullName = request.FullName;
                 existing.BirthDate = request.BirthDate;
                 existing.Address = request.Address;
+                existing.Email = request.Email;
+                existing.Password = ComputeSha256(request.Password);
 
                 UserRes response = new()
                 {
@@ -123,7 +133,9 @@ namespace BTBackendOnline2.Services.Implements
                     RoleId = request.RoleId,
                     FullName = request.FullName,
                     BirthDate = request.BirthDate,
-                    Address = request.Address
+                    Address = request.Address,
+                    Email = request.Email,
+                    Password = ComputeSha256(request.Password)
                 };
 
                 _context.Users.Update(existing);
@@ -135,6 +147,18 @@ namespace BTBackendOnline2.Services.Implements
                 _logger.LogError(ex, "Error occurred in Update method");
                 return ApiResponse<UserRes>.Fail($"Error: {ex.Message}");
             }
+        }
+
+        public static string ComputeSha256(string input)
+        {
+            using SHA256 sha256 = SHA256.Create();
+            byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(input + "ledang"));
+            StringBuilder builder = new();
+            foreach (byte b in bytes)
+            {
+                builder.Append(b.ToString("x2"));
+            }
+            return builder.ToString();
         }
     }
 }

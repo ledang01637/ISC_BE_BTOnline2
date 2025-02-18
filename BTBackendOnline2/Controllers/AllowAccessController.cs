@@ -1,12 +1,14 @@
 ﻿using BTBackendOnline2.DTOs.Request;
 using BTBackendOnline2.Services.Interfaces;
-using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BTBackendOnline2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class AllowAccessController : ControllerBase
     {
         private readonly IAllowAccess _service;
@@ -16,11 +18,12 @@ namespace BTBackendOnline2.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "user")]
         public IActionResult GetList()
         {
             var response = _service.GetAll();
 
-            return response.Code == 0 ? Ok(response) : BadRequest(response);
+            return response.Code == 0 ? Ok(response) : response.Code == 2 ? Unauthorized("Unauthorized") : BadRequest(response);
         }
 
         [HttpPost]
@@ -28,7 +31,7 @@ namespace BTBackendOnline2.Controllers
         {
             var response = _service.Create(request);
 
-            return response.Code == 0 ? Ok(response) : BadRequest(response);
+            return response.Code == 0 ? Ok(response) : response.Code == 2 ? Unauthorized() : BadRequest(response);
         }
 
         [HttpPut("{id}")]
