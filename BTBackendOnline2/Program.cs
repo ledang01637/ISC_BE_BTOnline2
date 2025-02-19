@@ -26,6 +26,7 @@ builder.Services.AddScoped<IRole, RoleService>();
 builder.Services.AddScoped<IUser, UserService>();
 builder.Services.AddScoped<IAllowAccess, AllowAccessService>();
 builder.Services.AddScoped<ILogin, LoginService>();
+builder.Services.AddScoped<IIntern, InternService>();
 
 var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"]);
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

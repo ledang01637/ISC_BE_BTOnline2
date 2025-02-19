@@ -1,6 +1,8 @@
 ﻿using BTBackendOnline2.DTOs.Request;
 using BTBackendOnline2.Models;
 using BTBackendOnline2.Services.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,6 +10,7 @@ namespace BTBackendOnline2.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class RoleController : ControllerBase
     {
         private readonly IRole _service;

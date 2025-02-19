@@ -80,7 +80,8 @@ namespace BTBackendOnline2.Services.Implements
                 new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.UtcNow.ToUnixTimeSeconds().ToString()),
                 new Claim(ClaimTypes.Name, user.Email),
                 new Claim(ClaimTypes.Role, role.RoleName),
-                new Claim("Email",user.Email)
+                new Claim("RoleId", user.RoleId.ToString()),
+                new Claim("Email", user.Email)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.SecretKey));
@@ -137,6 +138,7 @@ namespace BTBackendOnline2.Services.Implements
                  new Claim(JwtRegisteredClaimNames.Iat, DateTimeOffset.UtcNow.ToString()),
                  new Claim(ClaimTypes.Name, user.Email),
                  new Claim(ClaimTypes.Role, role.RoleName),
+                 new Claim("RoleId", user.RoleId.ToString()),
                  new Claim("Email", user.Email) };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwt.SecretKey));

@@ -85,9 +85,11 @@ namespace BTBackendOnline2.Services.Implements
                         Id = r.Id,
                         TableName = r.TableName,
                         RoleId = r.RoleId,
-                        AccessPropertiesJson = r.AccessPropertiesJson
+                        AccessPropertiesJson = r.AccessPropertiesJson.Trim('[', ']').Replace("\"", "")
                     })
                     .ToList();
+
+
 
                 return ApiResponse<List<AllowAccessRes>>.Success(allowAccessList);
             }

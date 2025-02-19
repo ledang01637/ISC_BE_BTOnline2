@@ -18,7 +18,6 @@ namespace BTBackendOnline2.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "user")]
         public IActionResult GetList()
         {
             var response = _service.GetAll();
@@ -31,7 +30,7 @@ namespace BTBackendOnline2.Controllers
         {
             var response = _service.Create(request);
 
-            return response.Code == 0 ? Ok(response) : response.Code == 2 ? Unauthorized() : BadRequest(response);
+            return response.Code == 0 ? Ok(response) : BadRequest(response);
         }
 
         [HttpPut("{id}")]

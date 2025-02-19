@@ -30,10 +30,5 @@ namespace BTBackendOnline2.Configurations
         {
             return new ApiResponse<T>(1, "Error", default, error);
         }
-
-        public static ApiResponse<T> Unauthorized(string message)
-        {
-            return new ApiResponse<T>(2, "Error", default, message);
-        }
     }
 }
