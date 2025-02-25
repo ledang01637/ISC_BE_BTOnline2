@@ -1,0 +1,16 @@
+INSERT INTO "Interns"  (
+    "InternName", "InternAddress", "DateOfBirth", "InternMail", "University", "Major", 
+    "Internable", "FullTime", "TelephoneNum", "InternStatus", "YearOfExperiences", 
+    "ReadyToWork", "InternEnabled", "Note"
+) VALUES 
+('Nguyễn Văn A', '123 Đường ABC, TP.HCM', '2001-05-10', 'nguyenvana@example.com', 'Đại học Bách Khoa', 'Kỹ thuật phần mềm', TRUE, FALSE, '0987654321', 'Đang thực tập', 2, TRUE, TRUE, 'Ứng viên tiềm năng'),
+('Trần Thị B', '456 Đường XYZ, Hà Nội', '2002-07-15', 'tranthib@example.com', 'Đại học Quốc Gia', 'Khoa học máy tính', FALSE, TRUE, '0978123456', 'Đã hoàn thành thực tập', 1, FALSE, TRUE, 'Có kỹ năng tốt'),
+('Lê Văn C', '789 Đường DEF, Đà Nẵng', '2000-03-20', 'levanc@example.com', 'Đại học Công Nghệ', 'Kinh doanh', TRUE, TRUE, '0901234567', 'Đang ứng tuyển', 3, TRUE, TRUE, 'Cần kiểm tra thêm kỹ năng'),
+('Phạm Thị D', '12 Đường GHI, Hải Phòng', '2001-09-25', 'phamthid@example.com', 'Đại học Sư Phạm', 'Giáo dục', TRUE, FALSE, '0912345678', 'Đang thực tập', 2, TRUE, TRUE, 'Khả năng giảng dạy tốt'),
+('Hoàng Văn E', '34 Đường JKL, Cần Thơ', '2003-01-30', 'hoangvane@example.com', 'Đại học Khoa Học', 'Công nghệ thông tin', FALSE, TRUE, '0923456789', 'Chưa có kinh nghiệm', 0, TRUE, FALSE, 'Ứng viên mới'),
+('Đặng Thị F', '56 Đường MNO, Huế', '2002-12-18', 'dangthif@example.com', 'Đại học Kinh tế', 'Quản trị kinh doanh', TRUE, FALSE, '0934567890', 'Đang thực tập', 1, TRUE, TRUE, 'Ứng viên có kỹ năng tốt'),
+('Vũ Văn G', '78 Đường PQR, Nha Trang', '2000-08-22', 'vuvang@example.com', 'Đại học Bách Khoa', 'Cơ khí', FALSE, TRUE, '0945678901', 'Đã hoàn thành thực tập', 3, FALSE, TRUE, 'Kinh nghiệm thực tế tốt'),
+('Bùi Thị H', '90 Đường STU, Bình Dương', '2001-06-12', 'buithih@example.com', 'Đại học Công Nghiệp', 'Điện tử', TRUE, TRUE, '0956789012', 'Đang ứng tuyển', 2, TRUE, TRUE, 'Có chứng chỉ chuyên môn'),
+('Trịnh Văn I', '112 Đường VWX, Vũng Tàu', '2003-04-05', 'trinhvani@example.com', 'Đại học Giao Thông', 'Xây dựng', TRUE, FALSE, '0967890123', 'Chưa có kinh nghiệm', 0, TRUE, FALSE, 'Đang học tập và trau dồi kỹ năng'),
+('Lý Thị K', '134 Đường YZA, Đà Lạt', '2002-11-01', 'lythik@example.com', 'Đại học Kiến Trúc', 'Thiết kế nội thất', FALSE, TRUE, '0978901234', 'Đang thực tập', 1, TRUE, TRUE, 'Có năng khiếu sáng tạo');
+
