@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BTBackendOnline2.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250217053533_update")]
-    partial class update
+    [Migration("20250224065633_Init")]
+    partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

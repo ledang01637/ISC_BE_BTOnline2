@@ -17,7 +17,8 @@ namespace BTBackendOnline2.Models
         {
             get => string.IsNullOrWhiteSpace(AccessPropertiesJson)
                 ? new List<string>()
-                : JsonSerializer.Deserialize<List<string>>(AccessPropertiesJson) ?? new List<string>();
+                : JsonSerializer.Deserialize<List<string>>(AccessPropertiesJson) 
+                ?? new List<string>();
 
             set => AccessPropertiesJson = JsonSerializer.Serialize(value ?? new List<string>());
         }
