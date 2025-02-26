@@ -29,6 +29,13 @@ namespace BTBackendOnline2.Services.Implements
                     return ApiResponse<AllowAccessRes>.Fail("Request is null");
                 }
 
+                var existing = _context.AllowAccess.FirstOrDefault(r => r.RoleId == request.RoleId);
+
+                if(existing != null)
+                {
+                    return ApiResponse<AllowAccessRes>.Fail("RoleId is existing");
+                }
+
                 AllowAccess allowAccess = new()
                 {
                     TableName = request.TableName,
